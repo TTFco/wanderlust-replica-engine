@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import heroImg from "@/assets/hero-beach.jpg";
 
 const HeroSection = () => {
