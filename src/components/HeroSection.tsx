@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import heroImg from "@/assets/hero-beach.jpg";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
   return (
     <section className="relative h-screen w-full overflow-hidden">
       <img
