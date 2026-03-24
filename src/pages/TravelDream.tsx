@@ -1,36 +1,116 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { MapPin, Users, Globe, Heart, Compass, Camera, Utensils, Mountain, Waves, TreePine, Sun, Star, ChevronLeft, ChevronRight } from "lucide-react";
-import dreamHero from "@/assets/dream-hero.jpg";
-import dreamAfrica from "@/assets/dream-africa.jpg";
-import dreamAsia from "@/assets/dream-asia.jpg";
-import dreamSouthAmerica from "@/assets/dream-south-america.jpg";
+import {
+  MapPin,
+  Users,
+  Globe,
+  Heart,
+  Compass,
+  Camera,
+  Utensils,
+  Mountain,
+  Waves,
+  TreePine,
+  Sun,
+  Star,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+
+const dreamHero =
+  "https://images.pexels.com/photos/18824171/pexels-photo-18824171.jpeg?auto=compress&cs=tinysrgb&w=1920";
+const dreamAfrica =
+  "https://images.pexels.com/photos/34214/africa-landscape-sunset-nature.jpg?auto=compress&cs=tinysrgb&w=1600";
+const dreamAsia =
+  "https://images.pexels.com/photos/4112948/pexels-photo-4112948.jpeg?auto=compress&cs=tinysrgb&w=1600";
+const dreamSouthAmerica =
+  "https://images.pexels.com/photos/2827744/pexels-photo-2827744.jpeg?auto=compress&cs=tinysrgb&w=1600";
 
 const STEPS = [
-  { num: 1, title: "Where to?", desc: "Choose your dream destination", icon: Compass },
-  { num: 2, title: "With Who?", desc: "Select your travel companions", icon: Users },
-  { num: 3, title: "Your Bucketlist", desc: "Tick off your must-dos", icon: Star },
+  {
+    num: 1,
+    title: "Where to?",
+    desc: "Choose your dream destination",
+    icon: Compass,
+  },
+  {
+    num: 2,
+    title: "With Who?",
+    desc: "Select your travel companions",
+    icon: Users,
+  },
+  {
+    num: 3,
+    title: "Your Bucketlist",
+    desc: "Tick off your must-dos",
+    icon: Star,
+  },
 ];
 
 const destinations = [
-  { id: "africa", name: "Africa", subtitle: "Safaris, sunsets & soul", img: dreamAfrica },
-  { id: "asia", name: "Asia", subtitle: "Temples, trails & tranquility", img: dreamAsia },
-  { id: "south-america", name: "South America", subtitle: "Mountains, magic & more", img: dreamSouthAmerica },
+  {
+    id: "africa",
+    name: "Africa",
+    subtitle: "Safaris, sunsets & soul",
+    img: dreamAfrica,
+  },
+  {
+    id: "asia",
+    name: "Asia",
+    subtitle: "Temples, trails & tranquility",
+    img: dreamAsia,
+  },
+  {
+    id: "south-america",
+    name: "South America",
+    subtitle: "Mountains, magic & more",
+    img: dreamSouthAmerica,
+  },
 ];
 
 const travellerTypes = [
   { id: "solo", label: "Solo", icon: "🧭", desc: "Just me, myself and I" },
-  { id: "couple", label: "Couple", icon: "💑", desc: "A romantic escape for two" },
+  {
+    id: "couple",
+    label: "Couple",
+    icon: "💑",
+    desc: "A romantic escape for two",
+  },
   { id: "family", label: "Family", icon: "👨‍👩‍👧‍👦", desc: "Fun for all ages" },
-  { id: "friends", label: "Friends", icon: "👥", desc: "Adventures with your crew" },
+  {
+    id: "friends",
+    label: "Friends",
+    icon: "👥",
+    desc: "Adventures with your crew",
+  },
 ];
 
 const travelPersonas = [
-  { id: "adventurer", label: "The Adventurer", icon: Mountain, desc: "Thrill-seeker at heart" },
-  { id: "relaxer", label: "The Relaxer", icon: Waves, desc: "Beach days & spa vibes" },
-  { id: "culture", label: "The Culture Seeker", icon: Camera, desc: "Immerse in local life" },
-  { id: "foodie", label: "The Foodie", icon: Utensils, desc: "Eat your way around the world" },
+  {
+    id: "adventurer",
+    label: "The Adventurer",
+    icon: Mountain,
+    desc: "Thrill-seeker at heart",
+  },
+  {
+    id: "relaxer",
+    label: "The Relaxer",
+    icon: Waves,
+    desc: "Beach days & spa vibes",
+  },
+  {
+    id: "culture",
+    label: "The Culture Seeker",
+    icon: Camera,
+    desc: "Immerse in local life",
+  },
+  {
+    id: "foodie",
+    label: "The Foodie",
+    icon: Utensils,
+    desc: "Eat your way around the world",
+  },
 ];
 
 const bucketlistItems = [
@@ -51,14 +131,18 @@ const bucketlistItems = [
 const TravelDream = () => {
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(0); // 0 = intro
-  const [selectedDestination, setSelectedDestination] = useState<string | null>(null);
-  const [selectedTravellerType, setSelectedTravellerType] = useState<string | null>(null);
+  const [selectedDestination, setSelectedDestination] = useState<string | null>(
+    null,
+  );
+  const [selectedTravellerType, setSelectedTravellerType] = useState<
+    string | null
+  >(null);
   const [selectedPersona, setSelectedPersona] = useState<string | null>(null);
   const [selectedBucketlist, setSelectedBucketlist] = useState<string[]>([]);
 
   const toggleBucketlist = (id: string) => {
     setSelectedBucketlist((prev) =>
-      prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]
+      prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id],
     );
   };
 
@@ -83,7 +167,11 @@ const TravelDream = () => {
           >
             {/* Hero */}
             <div className="relative h-[70vh] w-full overflow-hidden">
-              <img src={dreamHero} alt="Luxury safari camp at dusk" className="absolute inset-0 w-full h-full object-cover" />
+              <img
+                src={dreamHero}
+                alt="Luxury safari camp at dusk"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
               <div className="absolute inset-0 hero-overlay" />
               <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
                 <motion.p
@@ -116,13 +204,18 @@ const TravelDream = () => {
             {/* Intro text */}
             <div className="max-w-3xl mx-auto px-6 py-16 text-center">
               <p className="font-body text-lg leading-relaxed text-primary-foreground/80">
-                There are two kinds of traveller in this world. The kind who look for the next travel hot spot and the kind who seek the unexpected. Well, the good news is that you <em>can</em> travel the world better.
+                There are two kinds of traveller in this world. The kind who
+                look for the next travel hot spot and the kind who seek the
+                unexpected. Well, the good news is that you <em>can</em> travel
+                the world better.
               </p>
               <h3 className="font-display text-2xl mt-12 mb-8 text-primary-foreground/90">
                 You have to spend time to make time
               </h3>
               <p className="font-body text-primary-foreground/60 mb-12">
-                A journey starts with a dream…and a plan. You're just 3 easy (and fun) steps away from creating your ideal Travel Dream Board.
+                A journey starts with a dream…and a plan. You're just 3 easy
+                (and fun) steps away from creating your ideal Travel Dream
+                Board.
               </p>
             </div>
 
@@ -138,7 +231,9 @@ const TravelDream = () => {
                       Step {step.num}
                     </p>
                     <h4 className="font-display text-xl mb-2">{step.title}</h4>
-                    <p className="text-sm font-body text-primary-foreground/60">{step.desc}</p>
+                    <p className="text-sm font-body text-primary-foreground/60">
+                      {step.desc}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -172,9 +267,15 @@ const TravelDream = () => {
             className="min-h-screen px-6 py-24"
           >
             <div className="max-w-5xl mx-auto">
-              <p className="text-xs font-body tracking-[0.2em] uppercase text-primary-foreground/50 mb-2">Step 1</p>
-              <h2 className="font-display text-4xl md:text-5xl mb-3">Where are you dreaming of travelling?</h2>
-              <p className="font-body text-primary-foreground/60 mb-12">Begin by choosing which part of the world inspires you</p>
+              <p className="text-xs font-body tracking-[0.2em] uppercase text-primary-foreground/50 mb-2">
+                Step 1
+              </p>
+              <h2 className="font-display text-4xl md:text-5xl mb-3">
+                Where are you dreaming of travelling?
+              </h2>
+              <p className="font-body text-primary-foreground/60 mb-12">
+                Begin by choosing which part of the world inspires you
+              </p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
                 {destinations.map((dest) => (
@@ -187,11 +288,19 @@ const TravelDream = () => {
                         : "hover:scale-[1.02]"
                     }`}
                   >
-                    <img src={dest.img} alt={dest.name} className="absolute inset-0 w-full h-full object-cover" />
+                    <img
+                      src={dest.img}
+                      alt={dest.name}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
                     <div className="absolute inset-0 card-overlay" />
                     <div className="relative z-10 flex flex-col justify-end h-full p-6 text-left">
-                      <h3 className="font-display text-2xl text-primary-foreground">{dest.name}</h3>
-                      <p className="font-body text-sm text-primary-foreground/70 mt-1">{dest.subtitle}</p>
+                      <h3 className="font-display text-2xl text-primary-foreground">
+                        {dest.name}
+                      </h3>
+                      <p className="font-body text-sm text-primary-foreground/70 mt-1">
+                        {dest.subtitle}
+                      </p>
                     </div>
                     {selectedDestination === dest.id && (
                       <div className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-accent flex items-center justify-center">
@@ -225,9 +334,15 @@ const TravelDream = () => {
             className="min-h-screen px-6 py-24"
           >
             <div className="max-w-5xl mx-auto">
-              <p className="text-xs font-body tracking-[0.2em] uppercase text-primary-foreground/50 mb-2">Step 2</p>
-              <h2 className="font-display text-4xl md:text-5xl mb-3">Who are you travelling with?</h2>
-              <p className="font-body text-primary-foreground/60 mb-12">Select your traveller type</p>
+              <p className="text-xs font-body tracking-[0.2em] uppercase text-primary-foreground/50 mb-2">
+                Step 2
+              </p>
+              <h2 className="font-display text-4xl md:text-5xl mb-3">
+                Who are you travelling with?
+              </h2>
+              <p className="font-body text-primary-foreground/60 mb-12">
+                Select your traveller type
+              </p>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
                 {travellerTypes.map((type) => (
@@ -242,12 +357,16 @@ const TravelDream = () => {
                   >
                     <span className="text-3xl block mb-3">{type.icon}</span>
                     <h4 className="font-display text-lg mb-1">{type.label}</h4>
-                    <p className="text-xs font-body text-primary-foreground/50">{type.desc}</p>
+                    <p className="text-xs font-body text-primary-foreground/50">
+                      {type.desc}
+                    </p>
                   </button>
                 ))}
               </div>
 
-              <h3 className="font-display text-2xl md:text-3xl text-center mb-3">What kind of traveller are you?</h3>
+              <h3 className="font-display text-2xl md:text-3xl text-center mb-3">
+                What kind of traveller are you?
+              </h3>
               <p className="font-body text-primary-foreground/60 text-center mb-10">
                 Choose a travel persona that's most like you
               </p>
@@ -263,9 +382,15 @@ const TravelDream = () => {
                         : "border-primary-foreground/10 hover:border-primary-foreground/30"
                     }`}
                   >
-                    <persona.icon className={`w-8 h-8 mx-auto mb-3 ${selectedPersona === persona.id ? "text-accent" : "text-primary-foreground/60"}`} />
-                    <h4 className="font-display text-base mb-1">{persona.label}</h4>
-                    <p className="text-xs font-body text-primary-foreground/50">{persona.desc}</p>
+                    <persona.icon
+                      className={`w-8 h-8 mx-auto mb-3 ${selectedPersona === persona.id ? "text-accent" : "text-primary-foreground/60"}`}
+                    />
+                    <h4 className="font-display text-base mb-1">
+                      {persona.label}
+                    </h4>
+                    <p className="text-xs font-body text-primary-foreground/50">
+                      {persona.desc}
+                    </p>
                   </button>
                 ))}
               </div>
@@ -293,9 +418,15 @@ const TravelDream = () => {
             className="min-h-screen px-6 py-24"
           >
             <div className="max-w-5xl mx-auto">
-              <p className="text-xs font-body tracking-[0.2em] uppercase text-primary-foreground/50 mb-2">Step 3</p>
-              <h2 className="font-display text-4xl md:text-5xl mb-3">Your Bucketlist</h2>
-              <p className="font-body text-primary-foreground/60 mb-12">Tick off your bucket list must-dos</p>
+              <p className="text-xs font-body tracking-[0.2em] uppercase text-primary-foreground/50 mb-2">
+                Step 3
+              </p>
+              <h2 className="font-display text-4xl md:text-5xl mb-3">
+                Your Bucketlist
+              </h2>
+              <p className="font-body text-primary-foreground/60 mb-12">
+                Tick off your bucket list must-dos
+              </p>
 
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-16">
                 {bucketlistItems.map((item) => {
@@ -383,7 +514,9 @@ const StepNavigation = ({
 
 const StepIndicator = ({ currentStep }: { currentStep: number }) => (
   <div className="border-t border-primary-foreground/10 pt-12">
-    <p className="text-center font-body text-sm text-primary-foreground/40 mb-8 tracking-wider">Your Travel Dream</p>
+    <p className="text-center font-body text-sm text-primary-foreground/40 mb-8 tracking-wider">
+      Your Travel Dream
+    </p>
     <div className="flex justify-center gap-12 md:gap-16">
       {STEPS.map((step) => (
         <div key={step.num} className="text-center">
@@ -392,8 +525,8 @@ const StepIndicator = ({ currentStep }: { currentStep: number }) => (
               step.num === currentStep
                 ? "border-accent"
                 : step.num < currentStep
-                ? "border-primary-foreground/40"
-                : "border-primary-foreground/15"
+                  ? "border-primary-foreground/40"
+                  : "border-primary-foreground/15"
             }`}
           >
             <step.icon
@@ -401,15 +534,17 @@ const StepIndicator = ({ currentStep }: { currentStep: number }) => (
                 step.num === currentStep
                   ? "text-accent"
                   : step.num < currentStep
-                  ? "text-primary-foreground/60"
-                  : "text-primary-foreground/20"
+                    ? "text-primary-foreground/60"
+                    : "text-primary-foreground/20"
               }`}
             />
           </div>
           <p className="text-[10px] font-body tracking-[0.15em] uppercase text-primary-foreground/40">
             Step {step.num}
           </p>
-          <p className={`font-display text-sm mt-1 ${step.num === currentStep ? "text-primary-foreground" : "text-primary-foreground/40"}`}>
+          <p
+            className={`font-display text-sm mt-1 ${step.num === currentStep ? "text-primary-foreground" : "text-primary-foreground/40"}`}
+          >
             {step.title}
           </p>
         </div>

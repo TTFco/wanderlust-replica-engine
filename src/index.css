@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Raleway:wght@300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Raleway:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -36,11 +36,19 @@
 
     --radius: 0.25rem;
 
-    --hero-overlay: linear-gradient(180deg, hsla(30, 10%, 10%, 0.15) 0%, hsla(30, 10%, 10%, 0.7) 100%);
-    --card-overlay: linear-gradient(180deg, transparent 40%, hsla(30, 10%, 10%, 0.75) 100%);
+    --hero-overlay: linear-gradient(
+      180deg,
+      hsla(30, 10%, 10%, 0.15) 0%,
+      hsla(30, 10%, 10%, 0.7) 100%
+    );
+    --card-overlay: linear-gradient(
+      180deg,
+      transparent 40%,
+      hsla(30, 10%, 10%, 0.75) 100%
+    );
 
-    --font-display: 'Playfair Display', Georgia, serif;
-    --font-body: 'Raleway', 'Helvetica Neue', sans-serif;
+    --font-display: "Playfair Display", Georgia, serif;
+    --font-body: "Raleway", "Helvetica Neue", sans-serif;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -63,7 +71,12 @@
     font-family: var(--font-body);
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-display);
   }
 }
@@ -83,5 +96,23 @@
 
   .card-overlay {
     background: var(--card-overlay);
+  }
+
+  /* Auto-scroll animation for destinations */
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll 20s linear infinite;
+  }
+
+  .animate-scroll:hover {
+    animation-play-state: paused;
   }
 }

@@ -1,20 +1,47 @@
 import { motion } from "framer-motion";
-import { Instagram, Facebook, Twitter } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
+import {
+  footerExploreLinks,
+  footerLegalLinks,
+  siteConfig,
+  socialLinks,
+} from "@/config/site";
+import { navigateToSection } from "@/lib/navigation";
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleExploreClick = (href: string) => {
+    if (href === "#") {
+      return;
+    }
+
+    navigateToSection({
+      href,
+      currentPathname: location.pathname,
+      navigate,
+    });
+  };
+
   return (
-    <footer id="contact" className="bg-primary text-primary-foreground py-20 px-6 lg:px-16">
+    <footer
+      id="contact"
+      className="bg-primary px-6 py-20 text-primary-foreground lg:px-16"
+    >
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+        <div className="mb-16 grid grid-cols-1 gap-12 md:grid-cols-3">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h3 className="font-display text-2xl mb-4">The Travel Frenzy</h3>
-            <p className="font-body text-sm text-primary-foreground/70 leading-relaxed">
-              Extraordinary travel experiences across four continents. 
-              Where luxury meets purpose.
+            <h3 className="mb-4 font-display text-2xl">
+              {siteConfig.brandName}
+            </h3>
+            <p className="font-body text-sm leading-relaxed text-primary-foreground/70">
+              Extraordinary travel experiences across four continents. Where
+              luxury meets purpose.
             </p>
           </motion.div>
 
@@ -24,14 +51,21 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
-            <h4 className="font-body text-xs tracking-[0.2em] uppercase mb-4 text-primary-foreground/60">
+            <h4 className="mb-4 font-body text-xs uppercase tracking-[0.2em] text-primary-foreground/60">
               Explore
             </h4>
             <ul className="space-y-2 font-body text-sm">
-              <li><a href="#destinations" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">Destinations</a></li>
-              <li><a href="#experiences" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">Experiences</a></li>
-              <li><a href="#about" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">Our Story</a></li>
-              <li><a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">Journal</a></li>
+              {footerExploreLinks.map((link) => (
+                <li key={link.label}>
+                  <button
+                    type="button"
+                    onClick={() => handleExploreClick(link.href)}
+                    className="text-primary-foreground/80 transition-colors hover:text-primary-foreground"
+                  >
+                    {link.label}
+                  </button>
+                </li>
+              ))}
             </ul>
           </motion.div>
 
@@ -41,27 +75,58 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <h4 className="font-body text-xs tracking-[0.2em] uppercase mb-4 text-primary-foreground/60">
+            <h4 className="mb-4 font-body text-xs uppercase tracking-[0.2em] text-primary-foreground/60">
               Get In Touch
             </h4>
-            <p className="font-body text-sm text-primary-foreground/80 mb-4">
-              hello@thetravelfrenzy.com
-            </p>
+            <a
+              href={`mailto:${siteConfig.supportEmail}`}
+              className="mb-4 block font-body text-sm text-primary-foreground/80 transition-colors hover:text-primary-foreground"
+            >
+              {siteConfig.supportEmail}
+            </a>
             <div className="flex gap-4">
-              <Instagram className="w-5 h-5 text-primary-foreground/60 hover:text-primary-foreground cursor-pointer transition-colors" />
-              <Facebook className="w-5 h-5 text-primary-foreground/60 hover:text-primary-foreground cursor-pointer transition-colors" />
-              <Twitter className="w-5 h-5 text-primary-foreground/60 hover:text-primary-foreground cursor-pointer transition-colors" />
+              {socialLinks.map((link) => {
+                const Icon = link.icon;
+
+                return (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    aria-label={link.label}
+                    className="text-primary-foreground/60 transition-colors hover:text-primary-foreground"
+                  >
+                    <Icon className="h-5 w-5" />
+                  </a>
+                );
+              })}
             </div>
           </motion.div>
         </div>
 
-        <div className="border-t border-primary-foreground/15 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-primary-foreground/15 pt-8 md:flex-row md:items-end">
           <p className="font-body text-xs text-primary-foreground/50">
-            © 2026 The Travel Frenzy. All rights reserved.
+            {siteConfig.copyrightLabel}
           </p>
           <div className="flex gap-6 font-body text-xs text-primary-foreground/50">
-            <a href="#" className="hover:text-primary-foreground/80 transition-colors">Privacy</a>
-            <a href="#" className="hover:text-primary-foreground/80 transition-colors">Terms</a>
+            {footerLegalLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="transition-colors hover:text-primary-foreground/80"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+          <div className="inline-flex flex-col items-center gap-2 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 px-4 py-3 md:items-end">
+            <img
+              src={siteConfig.dataGlacierLogo}
+              alt="DataGlacier"
+              className="h-8 w-auto opacity-95"
+            />
+            <p className="font-body text-xs text-primary-foreground/70">
+              Designed and Hosted by DataGlacier
+            </p>
           </div>
         </div>
       </div>

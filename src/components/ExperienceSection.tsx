@@ -1,5 +1,11 @@
 import { motion } from "framer-motion";
-import luxuryImg from "@/assets/experience-luxury.jpg";
+import { getVideoUrl } from "@/data/videoUrlMap";
+
+const luxuryImg =
+  "https://images.pexels.com/photos/17072982/pexels-photo-17072982.jpeg?auto=compress&cs=tinysrgb&w=1600";
+const extraordinaryExperiencesVideo = getVideoUrl(
+  "homeExtraordinaryExperiencesVideo",
+);
 
 const ExperienceSection = () => {
   return (
@@ -13,11 +19,23 @@ const ExperienceSection = () => {
             transition={{ duration: 0.7 }}
             className="overflow-hidden rounded"
           >
-            <img
-              src={luxuryImg}
-              alt="Luxury overwater bungalows at sunset"
-              className="w-full h-[500px] object-cover"
-            />
+            {extraordinaryExperiencesVideo ? (
+              <video
+                src={extraordinaryExperiencesVideo}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                className="w-full h-[500px] object-cover"
+              />
+            ) : (
+              <img
+                src={luxuryImg}
+                alt="Luxury overwater bungalows at sunset"
+                className="w-full h-[500px] object-cover"
+              />
+            )}
           </motion.div>
 
           <motion.div
@@ -33,9 +51,10 @@ const ExperienceSection = () => {
               Where luxury meets the wild
             </h2>
             <p className="font-body text-muted-foreground leading-relaxed mb-8">
-              From private island retreats to intimate safari lodges nestled deep in the bush, every 
-              experience is crafted to connect you with the extraordinary. We believe travel should 
-              transform — not just transport.
+              From private island retreats to intimate safari lodges nestled
+              deep in the bush, every experience is crafted to connect you with
+              the extraordinary. We believe travel should transform — not just
+              transport.
             </p>
             <a
               href="#contact"

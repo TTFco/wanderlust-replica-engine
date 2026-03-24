@@ -1,73 +1,60 @@
-# Welcome to your Lovable project
+# Wanderlust Replica Engine
 
-## Project info
+A Vite + React + TypeScript travel site focused on cinematic destination storytelling.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Stack
 
-## How can I edit this code?
+- React 18
+- TypeScript
+- Vite
+- Tailwind CSS
+- shadcn-ui / Radix UI
+- Framer Motion
+- React Router
+- TanStack Query
+- Vitest
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Scripts
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
+npm run build
+npm run lint
+npm run test
 ```
 
-**Edit a file directly in GitHub**
+## Project Structure
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- `src/app`: top-level providers and route wiring.
+- `src/components`: reusable UI and section components.
+- `src/components/layout`: site shell components.
+- `src/components/sections`: reusable page-level section renderers.
+- `src/config`: site-wide brand, navigation, and footer configuration.
+- `src/data`: reusable page content and media configuration.
+- `src/lib`: shared helpers and animation/navigation utilities.
+- `src/pages`: route-level page entrypoints.
+- `src/types`: shared TypeScript models.
 
-**Use GitHub Codespaces**
+## Architecture Notes
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+The project is now organized around a few rules:
 
-## What technologies are used for this project?
+- Route files stay thin and mostly compose reusable page renderers.
+- Shared navigation, footer, and brand metadata live in `src/config/site.ts`.
+- Destination page content lives in `src/data/destinationContent.ts` instead of inline inside page files.
+- Shared destination rendering logic lives in `src/components/sections/DestinationPage.tsx`.
+- App-wide providers and route declarations are isolated in `src/app`.
+- Homepage destination cards are data-driven instead of hardcoded inside the section component.
 
-This project is built with:
+More detail is documented in [docs/architecture.md](docs/architecture.md).
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Media Strategy
 
-## How can I deploy this project?
+Large local video assets currently exist in `src/assets`. For production and for lighter Git pushes, move those videos to external hosting and swap components over to `src/data/videoUrlMap.ts` once URLs are available.
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## Development Guidance
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- Keep new destinations data-first: add content objects before building new page components.
+- Reuse `SiteLayout` for standard pages.
+- Reuse `DestinationPage` when a destination follows the existing cinematic long-form pattern.
+- Keep route files minimal and avoid embedding large static data structures in page components.
