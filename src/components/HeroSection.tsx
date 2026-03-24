@@ -1,18 +1,47 @@
 import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getVideoUrl } from "@/data/videoUrlMap";
+
+const optimizeCloudinaryVideoUrl = (url: string, width: number) => {
+  if (!url.includes("/video/upload/")) {
+    return url;
+  }
+
+  return url.replace(
+    "/video/upload/",
+    `/video/upload/f_auto,vc_auto,q_auto:good,w_${width}/`,
+  );
+};
+
+const getCloudinaryPosterUrl = (videoUrl: string) => {
+  if (!videoUrl.includes("/video/upload/")) {
+    return undefined;
+  }
+
+  const transformed = videoUrl
+    .replace("/video/upload/", "/video/upload/f_auto,q_auto,w_1600,so_0/")
+    .replace(/\.(mp4|mov|webm|m4v|3gp)(\?.*)?$/i, ".jpg$2");
+
+  return transformed;
+};
 
 const HeroSection = () => {
   const navigate = useNavigate();
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const videoSources = [
-    getVideoUrl("heroVideo1"),
-    getVideoUrl("heroVideo2"),
-    getVideoUrl("heroVideo3"),
-  ].filter((video) => video.length > 0);
+  const videoSources = useMemo(() => {
+    const rawSources = [
+      getVideoUrl("heroVideo1"),
+      getVideoUrl("heroVideo2"),
+      getVideoUrl("heroVideo3"),
+    ].filter((video) => video.length > 0);
+
+    return rawSources.map((source, index) =>
+      optimizeCloudinaryVideoUrl(source, index === 0 ? 1920 : 1600),
+    );
+  }, []);
 
   const skipToNextVideo = () => {
     if (videoSources.length === 0) {
@@ -46,6 +75,23 @@ const HeroSection = () => {
     }
   }, [currentVideoIndex, videoSources.length]);
 
+  useEffect(() => {
+    if (videoSources.length === 0) {
+      return;
+    }
+
+    const preloadLink = document.createElement("link");
+    preloadLink.rel = "preload";
+    preloadLink.as = "video";
+    preloadLink.href = videoSources[0];
+    preloadLink.setAttribute("fetchpriority", "high");
+    document.head.appendChild(preloadLink);
+
+    return () => {
+      document.head.removeChild(preloadLink);
+    };
+  }, [videoSources]);
+
   return (
     <section
       id="hero-section"
@@ -56,9 +102,11 @@ const HeroSection = () => {
           ref={videoRef}
           key={currentVideoIndex}
           src={videoSources[currentVideoIndex]}
+          poster={getCloudinaryPosterUrl(videoSources[currentVideoIndex])}
           autoPlay
           muted
           playsInline
+          preload="auto"
           onEnded={skipToNextVideo}
           className="absolute inset-0 w-full h-full object-cover"
         />
