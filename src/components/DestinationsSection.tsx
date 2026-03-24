@@ -111,7 +111,7 @@ const DestinationCard = ({ destination }: { destination: DestinationCardData }) 
   );
 
   const className =
-    "group relative mx-4 block h-96 w-80 flex-shrink-0 overflow-hidden rounded-xl border border-white/20 bg-white/10 shadow-2xl backdrop-blur-[1px] transition-all duration-300 hover:bg-white/15 hover:shadow-3xl hover:shadow-white/10 first:ml-0 last:mr-24";
+    "group relative mx-2 block h-[22rem] w-[78vw] flex-shrink-0 overflow-hidden rounded-xl border border-white/20 bg-white/10 shadow-2xl backdrop-blur-[1px] transition-all duration-300 hover:bg-white/15 hover:shadow-3xl hover:shadow-white/10 first:ml-0 last:mr-10 sm:mx-4 sm:h-96 sm:w-80 sm:last:mr-24";
 
   if (destination.route) {
     return (
@@ -141,13 +141,13 @@ const DestinationsSection = () => {
   return (
     <section
       id="destinations"
-      className="relative overflow-hidden bg-secondary px-6 py-24 lg:px-16"
+      className="relative overflow-hidden bg-secondary px-4 py-20 sm:px-6 sm:py-24 lg:px-16"
     >
       <button
         type="button"
         onClick={() => scrollCards("left")}
         aria-label="Scroll destinations left"
-        className="absolute left-0 top-1/2 z-30 flex h-44 w-12 -translate-y-1/2 items-center justify-center rounded-r-2xl bg-[#10222e]/90 text-white transition-all duration-300 hover:scale-105 hover:bg-[#10222e]"
+        className="absolute left-0 top-1/2 z-30 hidden h-44 w-12 -translate-y-1/2 items-center justify-center rounded-r-2xl bg-[#10222e]/90 text-white transition-all duration-300 hover:scale-105 hover:bg-[#10222e] md:flex"
       >
         <ChevronLeft className="h-6 w-6" />
       </button>
@@ -156,7 +156,7 @@ const DestinationsSection = () => {
         type="button"
         onClick={() => scrollCards("right")}
         aria-label="Scroll destinations right"
-        className="absolute right-0 top-1/2 z-30 flex h-44 w-12 -translate-y-1/2 items-center justify-center rounded-l-2xl bg-[#10222e]/90 text-white transition-all duration-300 hover:scale-105 hover:bg-[#10222e]"
+        className="absolute right-0 top-1/2 z-30 hidden h-44 w-12 -translate-y-1/2 items-center justify-center rounded-l-2xl bg-[#10222e]/90 text-white transition-all duration-300 hover:scale-105 hover:bg-[#10222e] md:flex"
       >
         <ChevronRight className="h-6 w-6" />
       </button>
@@ -167,7 +167,7 @@ const DestinationsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="mb-16 text-center font-display text-3xl text-foreground md:text-5xl"
+          className="mb-12 text-center font-display text-2xl text-foreground sm:mb-16 sm:text-3xl md:text-5xl"
         >
           Browse our destinations
         </motion.h2>

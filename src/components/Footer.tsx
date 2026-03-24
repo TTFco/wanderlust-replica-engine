@@ -27,16 +27,16 @@ const Footer = () => {
   return (
     <footer
       id="contact"
-      className="bg-primary px-6 py-20 text-primary-foreground lg:px-16"
+      className="bg-primary px-4 py-14 text-primary-foreground sm:px-6 sm:py-20 lg:px-16"
     >
       <div className="container">
-        <div className="mb-16 grid grid-cols-1 gap-12 md:grid-cols-3">
+        <div className="mb-12 grid grid-cols-1 gap-10 sm:mb-16 sm:gap-12 md:grid-cols-3">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h3 className="mb-4 font-display text-2xl">
+            <h3 className="mb-4 font-display text-xl sm:text-2xl">
               {siteConfig.brandName}
             </h3>
             <p className="font-body text-sm leading-relaxed text-primary-foreground/70">
@@ -103,11 +103,11 @@ const Footer = () => {
           </motion.div>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-primary-foreground/15 pt-8 md:flex-row md:items-end">
-          <p className="font-body text-xs text-primary-foreground/50">
+        <div className="flex flex-col items-center justify-between gap-5 border-t border-primary-foreground/15 pt-8 text-center md:flex-row md:items-end md:text-left">
+          <p className="font-body text-xs text-primary-foreground/50 md:text-left">
             {siteConfig.copyrightLabel}
           </p>
-          <div className="flex gap-6 font-body text-xs text-primary-foreground/50">
+          <div className="flex flex-wrap justify-center gap-4 font-body text-xs text-primary-foreground/50 md:justify-start md:gap-6">
             {footerLegalLinks.map((link) => (
               <a
                 key={link.label}

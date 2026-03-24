@@ -14,10 +14,10 @@ const NotFound = () => {
 
   return (
     <SiteLayout className="min-h-screen bg-muted">
-      <div className="flex min-h-screen items-center justify-center px-6">
+      <div className="flex min-h-[100svh] items-center justify-center px-4 sm:px-6">
         <div className="text-center">
-          <h1 className="mb-4 text-4xl font-bold">404</h1>
-          <p className="mb-4 text-xl text-muted-foreground">
+          <h1 className="mb-4 text-3xl font-bold sm:text-4xl">404</h1>
+          <p className="mb-4 text-lg text-muted-foreground sm:text-xl">
             Oops! Page not found
           </p>
           <Link to="/" className="text-primary underline hover:text-primary/90">

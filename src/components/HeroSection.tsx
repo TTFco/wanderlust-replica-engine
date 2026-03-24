@@ -95,7 +95,7 @@ const HeroSection = () => {
   return (
     <section
       id="hero-section"
-      className="relative h-screen w-full overflow-hidden"
+      className="relative h-[100svh] w-full overflow-hidden"
     >
       {videoSources.length > 0 && (
         <video
@@ -113,17 +113,17 @@ const HeroSection = () => {
       )}
       <div className="absolute inset-0 hero-overlay pointer-events-none" />
 
-      <div className="absolute right-6 top-1/2 z-30 -translate-y-1/2">
+      <div className="absolute right-3 top-1/2 z-30 -translate-y-1/2 sm:right-6">
         <button
           onClick={skipToNextVideo}
-          className="flex h-14 w-14 items-center justify-center rounded-full text-background bg-transparent shadow-none transition-all duration-200 hover:scale-110 hover:text-primary-foreground"
+          className="flex h-12 w-12 items-center justify-center rounded-full bg-transparent text-background shadow-none transition-all duration-200 hover:scale-110 hover:text-primary-foreground sm:h-14 sm:w-14"
           aria-label="Skip to next video"
         >
           <span className="text-3xl font-bold">››</span>
         </button>
       </div>
 
-      <div className="relative z-10 flex flex-col justify-end h-full pb-24 px-6 lg:px-16">
+      <div className="relative z-10 flex h-full flex-col justify-end px-4 pb-16 sm:px-6 sm:pb-24 lg:px-16">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -136,7 +136,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="font-display text-5xl md:text-7xl lg:text-8xl font-normal text-primary-foreground max-w-3xl leading-tight"
+          className="max-w-[92%] font-display text-4xl font-normal leading-tight text-primary-foreground sm:max-w-3xl sm:text-5xl md:text-7xl lg:text-8xl"
         >
           Travel that ignites your soul
         </motion.h1>

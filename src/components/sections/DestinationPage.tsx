@@ -69,7 +69,7 @@ const DestinationPage = ({ page }: DestinationPageProps) => {
   return (
     <SiteLayout>
       <section
-        className="relative flex min-h-screen items-end overflow-hidden"
+        className="relative flex min-h-[100svh] items-end overflow-hidden"
         id={page.hero.id}
       >
         <div className="absolute inset-0 bg-[#0e1b23]" />
@@ -110,27 +110,27 @@ const DestinationPage = ({ page }: DestinationPageProps) => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="relative z-10 container px-6 pb-20 lg:px-16 lg:pb-28"
+          className="relative z-10 container px-4 pb-14 sm:px-6 sm:pb-20 lg:px-16 lg:pb-28"
         >
           <p
-            className={`mb-4 font-body text-xs uppercase tracking-[0.35em] ${activeHeroTheme.eyebrow}`}
+            className={`mb-3 font-body text-[11px] uppercase tracking-[0.24em] sm:mb-4 sm:text-xs sm:tracking-[0.35em] ${activeHeroTheme.eyebrow}`}
           >
             thetravelfrenzy.com presents
           </p>
           <h1
-            className={`mb-6 max-w-4xl font-display text-4xl leading-tight transition-colors duration-500 md:text-6xl lg:text-7xl ${activeHeroTheme.title}`}
+            className={`mb-5 max-w-4xl font-display text-3xl leading-tight transition-colors duration-500 sm:text-4xl md:text-6xl lg:text-7xl ${activeHeroTheme.title}`}
           >
             {page.hero.title}
           </h1>
           <p
-            className={`mb-9 max-w-2xl font-body text-base transition-colors duration-500 md:text-xl ${activeHeroTheme.subtitle}`}
+            className={`mb-7 max-w-2xl font-body text-sm transition-colors duration-500 sm:text-base md:text-xl ${activeHeroTheme.subtitle}`}
           >
             {page.hero.subtitle}
           </p>
           <a
             href={`#${page.overview.id}`}
             onClick={scrollToOverview}
-            className={`inline-flex items-center gap-2 rounded-full px-7 py-3 font-body text-sm uppercase tracking-[0.22em] transition duration-300 ${activeHeroTheme.cta}`}
+            className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-body text-xs uppercase tracking-[0.15em] transition duration-300 sm:px-7 sm:py-3 sm:text-sm sm:tracking-[0.22em] ${activeHeroTheme.cta}`}
           >
             {page.hero.ctaLabel}
             <ArrowRight className="h-4 w-4" />
@@ -141,17 +141,17 @@ const DestinationPage = ({ page }: DestinationPageProps) => {
       <section
         id={page.overview.id}
         ref={overviewSectionRef}
-        className="bg-background px-6 py-24 lg:px-16"
+        className="bg-background px-4 py-16 sm:px-6 sm:py-20 lg:px-16 lg:py-24"
       >
         <div className="container grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <motion.div {...fadeInUp}>
             <p className="mb-4 font-body text-xs uppercase tracking-[0.28em] text-accent">
               Overview
             </p>
-            <h2 className="mb-6 font-display text-3xl md:text-5xl">
+            <h2 className="mb-5 font-display text-2xl sm:text-3xl md:text-5xl">
               {page.overview.title}
             </h2>
-            <p className="font-body text-base leading-8 text-foreground/80 md:text-lg">
+            <p className="font-body text-sm leading-7 text-foreground/80 sm:text-base md:text-lg md:leading-8">
               {page.overview.description}
             </p>
           </motion.div>
@@ -167,17 +167,17 @@ const DestinationPage = ({ page }: DestinationPageProps) => {
               muted
               playsInline
               onEnded={playNextOverviewVideo}
-              className="h-[520px] w-full object-cover transition duration-700 hover:scale-105"
+              className="h-[300px] w-full object-cover transition duration-700 hover:scale-105 sm:h-[420px] lg:h-[520px]"
             />
           </motion.div>
         </div>
       </section>
 
-      <section className="bg-secondary px-6 py-24 lg:px-16">
+      <section className="bg-secondary px-4 py-16 sm:px-6 sm:py-20 lg:px-16 lg:py-24">
         <div className="container">
           <motion.h2
             {...fadeInUp}
-            className="mb-14 text-center font-display text-3xl md:text-5xl"
+            className="mb-10 text-center font-display text-2xl sm:mb-14 sm:text-3xl md:text-5xl"
           >
             {page.reasonsTitle}
           </motion.h2>
@@ -205,11 +205,11 @@ const DestinationPage = ({ page }: DestinationPageProps) => {
         </div>
       </section>
 
-      <section className="bg-background px-6 py-24 lg:px-16">
+      <section className="bg-background px-4 py-16 sm:px-6 sm:py-20 lg:px-16 lg:py-24">
         <div className="container">
           <motion.h2
             {...fadeInUp}
-            className="mb-14 text-center font-display text-3xl md:text-5xl"
+            className="mb-10 text-center font-display text-2xl sm:mb-14 sm:text-3xl md:text-5xl"
           >
             {page.topPlacesTitle}
           </motion.h2>
@@ -221,7 +221,7 @@ const DestinationPage = ({ page }: DestinationPageProps) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.25 }}
                 transition={{ delay: index * 0.07, duration: 0.55 }}
-                className="group relative h-80 overflow-hidden rounded-2xl border border-border"
+                className="group relative h-64 overflow-hidden rounded-2xl border border-border sm:h-80"
               >
                 <video
                   src={place.video}
@@ -232,7 +232,7 @@ const DestinationPage = ({ page }: DestinationPageProps) => {
                   className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
-                <h3 className="absolute bottom-5 left-5 font-display text-2xl text-primary-foreground">
+                <h3 className="absolute bottom-4 left-4 font-display text-xl text-primary-foreground sm:bottom-5 sm:left-5 sm:text-2xl">
                   {place.name}
                 </h3>
               </motion.article>
@@ -241,11 +241,11 @@ const DestinationPage = ({ page }: DestinationPageProps) => {
         </div>
       </section>
 
-      <section className="bg-secondary px-6 py-24 lg:px-16">
+      <section className="bg-secondary px-4 py-16 sm:px-6 sm:py-20 lg:px-16 lg:py-24">
         <div className="container">
           <motion.h2
             {...fadeInUp}
-            className="mb-14 text-center font-display text-3xl md:text-5xl"
+            className="mb-10 text-center font-display text-2xl sm:mb-14 sm:text-3xl md:text-5xl"
           >
             {page.experiencesTitle}
           </motion.h2>
@@ -259,7 +259,7 @@ const DestinationPage = ({ page }: DestinationPageProps) => {
                 transition={{ delay: index * 0.08, duration: 0.55 }}
                 className="group overflow-hidden rounded-2xl border border-border bg-card/80"
               >
-                <div className="h-52 overflow-hidden">
+                <div className="h-44 overflow-hidden sm:h-52">
                   <video
                     src={experience.video}
                     autoPlay
@@ -270,7 +270,7 @@ const DestinationPage = ({ page }: DestinationPageProps) => {
                   />
                 </div>
                 <div className="p-5">
-                  <h3 className="mb-2 font-display text-2xl">
+                  <h3 className="mb-2 font-display text-xl sm:text-2xl">
                     {experience.title}
                   </h3>
                   <p className="font-body text-sm leading-7 text-foreground/70">
@@ -283,11 +283,11 @@ const DestinationPage = ({ page }: DestinationPageProps) => {
         </div>
       </section>
 
-      <section className="bg-background px-6 py-24 lg:px-16">
+      <section className="bg-background px-4 py-16 sm:px-6 sm:py-20 lg:px-16 lg:py-24">
         <div className="container">
           <motion.h2
             {...fadeInUp}
-            className="mb-14 text-center font-display text-3xl md:text-5xl"
+            className="mb-10 text-center font-display text-2xl sm:mb-14 sm:text-3xl md:text-5xl"
           >
             {page.itinerariesTitle}
           </motion.h2>
@@ -298,11 +298,13 @@ const DestinationPage = ({ page }: DestinationPageProps) => {
                 key={item.title}
                 {...fadeInUp}
                 transition={{ delay: index * 0.1, duration: 0.7 }}
-                className="rounded-3xl border border-border bg-card/80 p-8"
+                className="rounded-3xl border border-border bg-card/80 p-5 sm:p-8"
               >
                 <div className="mb-5 flex items-center gap-3">
                   <CalendarDays className="h-5 w-5 text-accent" />
-                  <h3 className="font-display text-3xl">{item.title}</h3>
+                  <h3 className="font-display text-2xl sm:text-3xl">
+                    {item.title}
+                  </h3>
                 </div>
                 <ul className="space-y-3">
                   {item.plan.map((line) => (
@@ -320,11 +322,11 @@ const DestinationPage = ({ page }: DestinationPageProps) => {
         </div>
       </section>
 
-      <section className="bg-secondary px-6 py-24 lg:px-16">
+      <section className="bg-secondary px-4 py-16 sm:px-6 sm:py-20 lg:px-16 lg:py-24">
         <div className="container">
           <motion.h2
             {...fadeInUp}
-            className="mb-14 text-center font-display text-3xl md:text-5xl"
+            className="mb-10 text-center font-display text-2xl sm:mb-14 sm:text-3xl md:text-5xl"
           >
             {page.staysTitle}
           </motion.h2>
@@ -337,11 +339,11 @@ const DestinationPage = ({ page }: DestinationPageProps) => {
         </div>
       </section>
 
-      <section className="bg-background px-6 py-24 lg:px-16">
+      <section className="bg-background px-4 py-16 sm:px-6 sm:py-20 lg:px-16 lg:py-24">
         <div className="container">
           <motion.h2
             {...fadeInUp}
-            className="mb-14 text-center font-display text-3xl md:text-5xl"
+            className="mb-10 text-center font-display text-2xl sm:mb-14 sm:text-3xl md:text-5xl"
           >
             {page.responsibleTravelTitle}
           </motion.h2>
@@ -356,10 +358,12 @@ const DestinationPage = ({ page }: DestinationPageProps) => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ delay: index * 0.08, duration: 0.55 }}
-                  className="rounded-2xl border border-border bg-card/80 p-7 text-center"
+                  className="rounded-2xl border border-border bg-card/80 p-5 text-center sm:p-7"
                 >
                   <Icon className="mx-auto mb-4 h-8 w-8 text-accent" />
-                  <h3 className="mb-3 font-display text-2xl">{item.title}</h3>
+                  <h3 className="mb-3 font-display text-xl sm:text-2xl">
+                    {item.title}
+                  </h3>
                   <p className="font-body text-sm leading-7 text-foreground/70">
                     {item.text}
                   </p>
@@ -370,11 +374,11 @@ const DestinationPage = ({ page }: DestinationPageProps) => {
         </div>
       </section>
 
-      <section className="bg-secondary px-6 py-24 lg:px-16">
+      <section className="bg-secondary px-4 py-16 sm:px-6 sm:py-20 lg:px-16 lg:py-24">
         <div className="container">
           <motion.h2
             {...fadeInUp}
-            className="mb-12 text-center font-display text-3xl md:text-5xl"
+            className="mb-10 text-center font-display text-2xl sm:mb-12 sm:text-3xl md:text-5xl"
           >
             {page.bestTimeTitle}
           </motion.h2>
@@ -384,9 +388,9 @@ const DestinationPage = ({ page }: DestinationPageProps) => {
               <motion.div
                 key={period.months}
                 {...fadeInUp}
-                className="flex flex-col gap-3 rounded-2xl border border-border bg-card/80 px-6 py-5 md:flex-row md:items-center md:justify-between"
+                className="flex flex-col gap-3 rounded-2xl border border-border bg-card/80 px-4 py-4 sm:px-6 sm:py-5 md:flex-row md:items-center md:justify-between"
               >
-                <h3 className="font-display text-2xl text-accent">
+                <h3 className="font-display text-xl text-accent sm:text-2xl">
                   {period.months}
                 </h3>
                 <p className="font-body text-sm text-foreground/70 md:max-w-2xl">
@@ -398,7 +402,7 @@ const DestinationPage = ({ page }: DestinationPageProps) => {
         </div>
       </section>
 
-      <section className="bg-secondary px-6 pb-24 lg:px-16">
+      <section className="bg-secondary px-4 pb-16 sm:px-6 sm:pb-24 lg:px-16">
         <motion.div
           {...fadeInUp}
           className="container relative overflow-hidden rounded-3xl border border-border"
@@ -407,7 +411,7 @@ const DestinationPage = ({ page }: DestinationPageProps) => {
             <img
               src={page.cta.media.src}
               alt={page.cta.media.alt}
-              className="h-[420px] w-full object-cover"
+              className="h-[320px] w-full object-cover sm:h-[420px]"
             />
           ) : (
             <video
@@ -417,18 +421,18 @@ const DestinationPage = ({ page }: DestinationPageProps) => {
               preload="none"
               loop
               playsInline
-              className="h-[420px] w-full object-cover"
+              className="h-[320px] w-full object-cover sm:h-[420px]"
             />
           )}
           <div className="absolute inset-0 bg-gradient-to-r from-black/75 to-black/40" />
-          <div className="absolute inset-0 flex flex-col justify-center p-8 md:p-12 lg:p-16">
-            <p className="mb-4 font-body text-xs uppercase tracking-[0.28em] text-white/70">
+          <div className="absolute inset-0 flex flex-col justify-center p-5 sm:p-8 md:p-12 lg:p-16">
+            <p className="mb-3 font-body text-[11px] uppercase tracking-[0.2em] text-white/70 sm:mb-4 sm:text-xs sm:tracking-[0.28em]">
               {page.cta.eyebrow}
             </p>
-            <h2 className="mb-6 max-w-2xl font-display text-4xl md:text-6xl">
+            <h2 className="mb-5 max-w-2xl font-display text-3xl sm:text-4xl md:text-6xl">
               {page.cta.title}
             </h2>
-            <button className="inline-flex w-fit items-center gap-2 rounded-full bg-accent px-7 py-3 font-body text-sm uppercase tracking-[0.2em] text-accent-foreground transition hover:scale-[1.02] hover:brightness-110">
+            <button className="inline-flex w-fit items-center gap-2 rounded-full bg-accent px-6 py-3 font-body text-xs uppercase tracking-[0.14em] text-accent-foreground transition hover:scale-[1.02] hover:brightness-110 sm:px-7 sm:text-sm sm:tracking-[0.2em]">
               {page.cta.buttonLabel}
               <MoonStar className="h-4 w-4" />
             </button>
@@ -455,7 +459,7 @@ const StayCard = ({ item, index }: StayCardProps) => {
       transition={{ delay: index * 0.09, duration: 0.6 }}
       className="group overflow-hidden rounded-2xl border border-border bg-card/80"
     >
-      <div className="h-60 overflow-hidden">
+      <div className="h-48 overflow-hidden sm:h-60">
         {item.media.type === "image" ? (
           <img
             src={item.media.src}
@@ -474,11 +478,11 @@ const StayCard = ({ item, index }: StayCardProps) => {
           />
         )}
       </div>
-      <div className="p-6">
+      <div className="p-5 sm:p-6">
         <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent/15 text-accent">
           <Icon className="h-5 w-5" />
         </div>
-        <h3 className="mb-2 font-display text-2xl">{item.title}</h3>
+        <h3 className="mb-2 font-display text-xl sm:text-2xl">{item.title}</h3>
         <p className="font-body text-sm leading-7 text-foreground/70">
           {item.description}
         </p>

@@ -9,9 +9,12 @@ const extraordinaryExperiencesVideo = getVideoUrl(
 
 const ExperienceSection = () => {
   return (
-    <section id="experiences" className="py-24 px-6 lg:px-16 bg-background">
+    <section
+      id="experiences"
+      className="bg-background px-4 py-16 sm:px-6 sm:py-24 lg:px-16"
+    >
       <div className="container">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 items-center gap-8 sm:gap-12 lg:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -27,13 +30,13 @@ const ExperienceSection = () => {
                 loop
                 playsInline
                 preload="metadata"
-                className="w-full h-[500px] object-cover"
+                className="h-[320px] w-full object-cover sm:h-[420px] lg:h-[500px]"
               />
             ) : (
               <img
                 src={luxuryImg}
                 alt="Luxury overwater bungalows at sunset"
-                className="w-full h-[500px] object-cover"
+                className="h-[320px] w-full object-cover sm:h-[420px] lg:h-[500px]"
               />
             )}
           </motion.div>
@@ -47,10 +50,10 @@ const ExperienceSection = () => {
             <p className="text-xs font-body tracking-[0.3em] uppercase text-muted-foreground mb-4">
               Extraordinary Experiences
             </p>
-            <h2 className="font-display text-3xl md:text-5xl text-foreground mb-6 leading-snug">
+            <h2 className="mb-5 font-display text-2xl leading-snug text-foreground sm:mb-6 sm:text-3xl md:text-5xl">
               Where luxury meets the wild
             </h2>
-            <p className="font-body text-muted-foreground leading-relaxed mb-8">
+            <p className="mb-8 font-body leading-relaxed text-muted-foreground">
               From private island retreats to intimate safari lodges nestled
               deep in the bush, every experience is crafted to connect you with
               the extraordinary. We believe travel should transform — not just
@@ -58,7 +61,7 @@ const ExperienceSection = () => {
             </p>
             <a
               href="#contact"
-              className="inline-block bg-primary text-primary-foreground px-8 py-3 text-sm font-body tracking-widest uppercase hover:bg-accent transition-colors"
+              className="inline-block bg-primary px-7 py-3 text-sm font-body uppercase tracking-[0.2em] text-primary-foreground transition-colors hover:bg-accent sm:px-8 sm:tracking-widest"
             >
               Plan Your Journey
             </a>

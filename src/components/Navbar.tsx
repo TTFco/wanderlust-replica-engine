@@ -127,26 +127,26 @@ const Navbar = () => {
           showNavbar ? "translate-y-0" : "-translate-y-full"
         } ${scrolled ? "bg-white" : "bg-transparent"}`}
       >
-        <div className="container flex h-24 items-center justify-between px-6 lg:px-12">
-          <div className="relative flex items-center gap-4">
+        <div className="container flex h-20 items-center justify-between px-4 sm:h-24 sm:px-6 lg:px-12">
+          <div className="relative flex items-center gap-2 sm:gap-4">
             <div
               className="flex items-center justify-center rounded-full transition-all duration-300"
               style={{
                 backgroundColor: scrolled ? "#10222e" : "transparent",
-                width: "70px",
-                height: "70px",
+                width: "56px",
+                height: "56px",
               }}
             >
               <img
                 src={siteConfig.brandLogo}
                 alt={`${siteConfig.brandName} logo`}
-                className="h-16 w-16 object-contain"
+                className="h-12 w-12 object-contain sm:h-16 sm:w-16"
               />
             </div>
             <button
               type="button"
               onClick={showHeadingHint}
-              className={`font-header text-4xl font-semibold tracking-wide ${
+              className={`max-w-[42vw] truncate font-header text-2xl font-semibold tracking-wide sm:max-w-none sm:text-4xl ${
                 scrolled ? "text-black" : "text-white"
               }`}
             >
@@ -162,7 +162,7 @@ const Navbar = () => {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 8, scale: 0.96 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute left-20 top-full z-50 mt-2 whitespace-nowrap rounded-xl border border-white/35 bg-white/90 px-3 py-2 text-xs font-medium text-[#10222e] shadow-xl"
+                  className="absolute left-0 top-full z-50 mt-2 hidden max-w-[80vw] whitespace-nowrap rounded-xl border border-white/35 bg-white/90 px-3 py-2 text-xs font-medium text-[#10222e] shadow-xl sm:left-20 sm:block"
                 >
                   {siteConfig.headingHint}
                 </motion.div>
@@ -251,7 +251,7 @@ const Navbar = () => {
 
           <div className="flex items-center gap-4">
             <Search
-              className={`h-7 w-7 cursor-pointer transition-colors ${
+              className={`hidden h-7 w-7 cursor-pointer transition-colors sm:block ${
                 scrolled ? "text-black" : "text-white"
               }`}
             />
@@ -287,7 +287,7 @@ const Navbar = () => {
               exit={{ opacity: 0, scale: 0.35, y: 8 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
               style={{ originX: 1, originY: 0 }}
-              className="fixed right-3 top-20 z-50 w-[300px] overflow-hidden rounded-2xl border border-white/25 bg-white/12 shadow-2xl backdrop-blur-xl"
+              className="fixed right-3 top-20 z-50 w-[calc(100vw-1.5rem)] max-w-[320px] overflow-hidden rounded-2xl border border-white/25 bg-white/12 shadow-2xl backdrop-blur-xl"
             >
               <div className="flex h-full flex-col p-4">
                 <div className="mb-4 flex items-center justify-between border-b border-white/20 pb-3">

@@ -154,7 +154,7 @@ const TravelDream = () => {
   };
 
   return (
-    <div className="min-h-screen bg-foreground text-primary-foreground">
+    <div className="min-h-[100svh] bg-foreground text-primary-foreground">
       {/* Intro / Landing */}
       <AnimatePresence mode="wait">
         {currentStep === 0 && (
@@ -163,17 +163,17 @@ const TravelDream = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="min-h-screen"
+            className="min-h-[100svh]"
           >
             {/* Hero */}
-            <div className="relative h-[70vh] w-full overflow-hidden">
+            <div className="relative h-[62svh] w-full overflow-hidden sm:h-[70vh]">
               <img
                 src={dreamHero}
                 alt="Luxury safari camp at dusk"
                 className="absolute inset-0 w-full h-full object-cover"
               />
               <div className="absolute inset-0 hero-overlay" />
-              <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
+              <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center sm:px-6">
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -186,7 +186,7 @@ const TravelDream = () => {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
-                  className="font-display text-5xl md:text-7xl lg:text-8xl font-normal"
+                  className="font-display text-4xl font-normal sm:text-5xl md:text-7xl lg:text-8xl"
                 >
                   Travel Dream
                 </motion.h1>
@@ -202,14 +202,14 @@ const TravelDream = () => {
             </div>
 
             {/* Intro text */}
-            <div className="max-w-3xl mx-auto px-6 py-16 text-center">
-              <p className="font-body text-lg leading-relaxed text-primary-foreground/80">
+            <div className="mx-auto max-w-3xl px-4 py-12 text-center sm:px-6 sm:py-16">
+              <p className="font-body text-base leading-relaxed text-primary-foreground/80 sm:text-lg">
                 There are two kinds of traveller in this world. The kind who
                 look for the next travel hot spot and the kind who seek the
                 unexpected. Well, the good news is that you <em>can</em> travel
                 the world better.
               </p>
-              <h3 className="font-display text-2xl mt-12 mb-8 text-primary-foreground/90">
+              <h3 className="mt-10 mb-6 font-display text-xl text-primary-foreground/90 sm:mt-12 sm:mb-8 sm:text-2xl">
                 You have to spend time to make time
               </h3>
               <p className="font-body text-primary-foreground/60 mb-12">
@@ -220,11 +220,11 @@ const TravelDream = () => {
             </div>
 
             {/* Steps overview */}
-            <div className="max-w-4xl mx-auto px-6 pb-12">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="mx-auto max-w-4xl px-4 pb-10 sm:px-6 sm:pb-12">
+              <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-3">
                 {STEPS.map((step) => (
                   <div key={step.num} className="text-center">
-                    <div className="w-16 h-16 mx-auto mb-4 rounded-full border border-primary-foreground/20 flex items-center justify-center">
+                    <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-primary-foreground/20 sm:h-16 sm:w-16">
                       <step.icon className="w-7 h-7 text-accent" />
                     </div>
                     <p className="text-xs font-body tracking-[0.2em] uppercase text-primary-foreground/50 mb-1">
@@ -240,7 +240,7 @@ const TravelDream = () => {
             </div>
 
             {/* CTA */}
-            <div className="text-center pb-20">
+            <div className="pb-14 text-center sm:pb-20">
               <p className="text-sm font-body text-primary-foreground/50 mb-4 tracking-wider uppercase">
                 Continue to Step 1
               </p>
@@ -249,7 +249,7 @@ const TravelDream = () => {
               </p>
               <button
                 onClick={() => setCurrentStep(1)}
-                className="inline-block border border-accent bg-accent text-accent-foreground px-10 py-3 text-sm font-body tracking-widest uppercase hover:bg-accent/90 transition-all"
+                className="inline-block border border-accent bg-accent px-8 py-3 text-sm font-body uppercase tracking-[0.2em] text-accent-foreground transition-all hover:bg-accent/90 sm:px-10 sm:tracking-widest"
               >
                 Go
               </button>
@@ -264,20 +264,20 @@ const TravelDream = () => {
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -60 }}
-            className="min-h-screen px-6 py-24"
+            className="min-h-[100svh] px-4 py-16 sm:px-6 sm:py-24"
           >
             <div className="max-w-5xl mx-auto">
               <p className="text-xs font-body tracking-[0.2em] uppercase text-primary-foreground/50 mb-2">
                 Step 1
               </p>
-              <h2 className="font-display text-4xl md:text-5xl mb-3">
+              <h2 className="mb-3 font-display text-3xl sm:text-4xl md:text-5xl">
                 Where are you dreaming of travelling?
               </h2>
               <p className="font-body text-primary-foreground/60 mb-12">
                 Begin by choosing which part of the world inspires you
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+              <div className="mb-12 grid grid-cols-1 gap-5 sm:mb-16 sm:gap-6 md:grid-cols-3">
                 {destinations.map((dest) => (
                   <button
                     key={dest.id}
@@ -331,25 +331,25 @@ const TravelDream = () => {
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -60 }}
-            className="min-h-screen px-6 py-24"
+            className="min-h-[100svh] px-4 py-16 sm:px-6 sm:py-24"
           >
             <div className="max-w-5xl mx-auto">
               <p className="text-xs font-body tracking-[0.2em] uppercase text-primary-foreground/50 mb-2">
                 Step 2
               </p>
-              <h2 className="font-display text-4xl md:text-5xl mb-3">
+              <h2 className="mb-3 font-display text-3xl sm:text-4xl md:text-5xl">
                 Who are you travelling with?
               </h2>
               <p className="font-body text-primary-foreground/60 mb-12">
                 Select your traveller type
               </p>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+              <div className="mb-12 grid grid-cols-2 gap-3 sm:mb-16 sm:gap-4 md:grid-cols-4">
                 {travellerTypes.map((type) => (
                   <button
                     key={type.id}
                     onClick={() => setSelectedTravellerType(type.id)}
-                    className={`p-6 rounded-sm border text-center transition-all duration-300 ${
+                    className={`rounded-sm border p-4 text-center transition-all duration-300 sm:p-6 ${
                       selectedTravellerType === type.id
                         ? "border-accent bg-accent/10"
                         : "border-primary-foreground/10 hover:border-primary-foreground/30"
@@ -364,19 +364,19 @@ const TravelDream = () => {
                 ))}
               </div>
 
-              <h3 className="font-display text-2xl md:text-3xl text-center mb-3">
+              <h3 className="mb-3 text-center font-display text-xl sm:text-2xl md:text-3xl">
                 What kind of traveller are you?
               </h3>
               <p className="font-body text-primary-foreground/60 text-center mb-10">
                 Choose a travel persona that's most like you
               </p>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+              <div className="mb-12 grid grid-cols-2 gap-3 sm:mb-16 sm:gap-4 md:grid-cols-4">
                 {travelPersonas.map((persona) => (
                   <button
                     key={persona.id}
                     onClick={() => setSelectedPersona(persona.id)}
-                    className={`p-6 rounded-sm border text-center transition-all duration-300 ${
+                    className={`rounded-sm border p-4 text-center transition-all duration-300 sm:p-6 ${
                       selectedPersona === persona.id
                         ? "border-accent bg-accent/10"
                         : "border-primary-foreground/10 hover:border-primary-foreground/30"
@@ -415,34 +415,36 @@ const TravelDream = () => {
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -60 }}
-            className="min-h-screen px-6 py-24"
+            className="min-h-[100svh] px-4 py-16 sm:px-6 sm:py-24"
           >
             <div className="max-w-5xl mx-auto">
               <p className="text-xs font-body tracking-[0.2em] uppercase text-primary-foreground/50 mb-2">
                 Step 3
               </p>
-              <h2 className="font-display text-4xl md:text-5xl mb-3">
+              <h2 className="mb-3 font-display text-3xl sm:text-4xl md:text-5xl">
                 Your Bucketlist
               </h2>
               <p className="font-body text-primary-foreground/60 mb-12">
                 Tick off your bucket list must-dos
               </p>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-16">
+              <div className="mb-12 grid grid-cols-2 gap-3 sm:mb-16 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
                 {bucketlistItems.map((item) => {
                   const selected = selectedBucketlist.includes(item.id);
                   return (
                     <button
                       key={item.id}
                       onClick={() => toggleBucketlist(item.id)}
-                      className={`p-5 rounded-sm border text-left transition-all duration-300 ${
+                      className={`rounded-sm border p-4 text-left transition-all duration-300 sm:p-5 ${
                         selected
                           ? "border-accent bg-accent/10"
                           : "border-primary-foreground/10 hover:border-primary-foreground/30"
                       }`}
                     >
                       <span className="text-2xl block mb-3">{item.icon}</span>
-                      <p className="font-body text-sm">{item.label}</p>
+                      <p className="font-body text-xs sm:text-sm">
+                        {item.label}
+                      </p>
                       {selected && (
                         <div className="mt-2">
                           <Heart className="w-4 h-4 text-accent fill-accent" />
@@ -489,10 +491,10 @@ const StepNavigation = ({
   backLabel?: string;
   nextLabel?: string;
 }) => (
-  <div className="flex items-center justify-center gap-8 mb-16">
+  <div className="mb-12 flex flex-col items-stretch justify-center gap-3 sm:mb-16 sm:flex-row sm:items-center sm:gap-8">
     <button
       onClick={onBack}
-      className="flex items-center gap-2 text-sm font-body text-accent hover:text-accent/80 transition-colors"
+      className="flex items-center justify-center gap-2 text-sm font-body text-accent transition-colors hover:text-accent/80"
     >
       <ChevronLeft className="w-4 h-4" />
       {backLabel}
@@ -500,7 +502,7 @@ const StepNavigation = ({
     <button
       onClick={onNext}
       disabled={!canProceed}
-      className={`flex items-center gap-2 px-8 py-3 text-sm font-body tracking-widest uppercase transition-all ${
+      className={`flex items-center justify-center gap-2 px-6 py-3 text-xs font-body uppercase tracking-[0.15em] transition-all sm:px-8 sm:text-sm sm:tracking-widest ${
         canProceed
           ? "bg-accent text-accent-foreground hover:bg-accent/90"
           : "bg-primary-foreground/10 text-primary-foreground/30 cursor-not-allowed"
@@ -513,13 +515,13 @@ const StepNavigation = ({
 );
 
 const StepIndicator = ({ currentStep }: { currentStep: number }) => (
-  <div className="border-t border-primary-foreground/10 pt-12">
-    <p className="text-center font-body text-sm text-primary-foreground/40 mb-8 tracking-wider">
+  <div className="border-t border-primary-foreground/10 pt-10 sm:pt-12">
+    <p className="mb-6 text-center font-body text-sm tracking-wider text-primary-foreground/40 sm:mb-8">
       Your Travel Dream
     </p>
-    <div className="flex justify-center gap-12 md:gap-16">
+    <div className="flex justify-center gap-6 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-12 md:gap-16">
       {STEPS.map((step) => (
-        <div key={step.num} className="text-center">
+        <div key={step.num} className="min-w-24 text-center">
           <div
             className={`w-12 h-12 mx-auto mb-3 rounded-full border flex items-center justify-center ${
               step.num === currentStep
@@ -543,7 +545,7 @@ const StepIndicator = ({ currentStep }: { currentStep: number }) => (
             Step {step.num}
           </p>
           <p
-            className={`font-display text-sm mt-1 ${step.num === currentStep ? "text-primary-foreground" : "text-primary-foreground/40"}`}
+            className={`mt-1 font-display text-xs sm:text-sm ${step.num === currentStep ? "text-primary-foreground" : "text-primary-foreground/40"}`}
           >
             {step.title}
           </p>

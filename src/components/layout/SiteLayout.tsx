@@ -10,7 +10,7 @@ interface SiteLayoutProps extends PropsWithChildren {
 
 const SiteLayout = ({
   children,
-  className = "min-h-screen bg-background text-foreground",
+  className = "min-h-screen overflow-x-hidden bg-background text-foreground",
   showFooter = true,
   showNavbar = true,
 }: SiteLayoutProps) => {

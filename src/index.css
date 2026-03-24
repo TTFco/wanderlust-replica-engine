@@ -69,6 +69,13 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  #root {
+    min-height: 100svh;
+    overflow-x: hidden;
   }
 
   h1,
